@@ -39,7 +39,7 @@ public class TeamCommand implements CommandExecutor {
             return true;
         }
 
-        if (!game.getState().equals(Game.State.PRE_GAME)) {
+        if (game.getState().equals(Game.State.IN_GAME)) {
             sender.sendMessage(
                     ChatColor.DARK_RED
                             + "Error: "
