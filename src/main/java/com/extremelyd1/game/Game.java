@@ -627,7 +627,6 @@ public class Game {
     public enum State {
         PRE_GAME("Pre-game"),
         IN_GAME("In-game");
-        // POST_GAME("Post-game");
 
         private final String name;
 
