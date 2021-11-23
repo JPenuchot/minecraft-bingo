@@ -403,11 +403,7 @@ public class Game {
 
         titleManager.sendEndTitle(winReason);
 
-        this.state = State.POST_GAME;
-
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            onlinePlayer.setGameMode(GameMode.CREATIVE);
-        }
+        this.state = State.PRE_GAME;
 
         // Check whether we need to show all maps to all players
         if (config.isShowAllMapsPostGame()) {
@@ -630,8 +626,8 @@ public class Game {
 
     public enum State {
         PRE_GAME("Pre-game"),
-        IN_GAME("In-game"),
-        POST_GAME("Post-game");
+        IN_GAME("In-game");
+        // POST_GAME("Post-game");
 
         private final String name;
 
