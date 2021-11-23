@@ -65,25 +65,24 @@ public class InteractListener implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         Action action = e.getAction();
-        if (game.getState().equals(Game.State.POST_GAME)) {
-            // Check if we right clicked a block
-            if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-                Block clickedBlock = e.getClickedBlock();
-                if (clickedBlock != null) {
-                    // Get block state and check if it is a container
-                    BlockState blockState = clickedBlock.getState();
-                    if (blockState instanceof Container) {
-                        // Create copy of inventory
-                        Inventory inventory = InventoryUtil.copyInventory(((Container) blockState).getInventory());
-                        // Show the player the copied inventory
-                        e.getPlayer().openInventory(inventory);
-                    }
-                }
-            }
-
-            e.setCancelled(true);
-            return;
-        }
+        // if (game.getState().equals(Game.State.POST_GAME)) {
+        //     // Check if we right clicked a block
+        //     if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+        //         Block clickedBlock = e.getClickedBlock();
+        //         if (clickedBlock != null) {
+        //             // Get block state and check if it is a container
+        //             BlockState blockState = clickedBlock.getState();
+        //             if (blockState instanceof Container) {
+        //                 // Create copy of inventory
+        //                 Inventory inventory = InventoryUtil.copyInventory(((Container) blockState).getInventory());
+        //                 // Show the player the copied inventory
+        //                 e.getPlayer().openInventory(inventory);
+        //             }
+        //         }
+        //     }
+        //     e.setCancelled(true);
+        //     return;
+        // }
 
         if (game.getState().equals(Game.State.PRE_GAME)) {
             e.setCancelled(true);
@@ -129,28 +128,24 @@ public class InteractListener implements Listener {
             return;
         }
 
-        if (game.getState().equals(Game.State.POST_GAME)) {
-            Entity entity = e.getRightClicked();
-
-            // If the player clicked an entity with an inventory
-            // show them the inventory
-            // TODO: replicate villager trade window, since they only allow a single
-            //  player to interact with them
-            if (entity.getType().equals(EntityType.VILLAGER)) {
-                return;
-            }
-
-            // Only allow the following inventory holding entities as interaction targets
-            if (entity.getType().equals(EntityType.MINECART_CHEST)
-                    || entity.getType().equals(EntityType.MINECART_FURNACE)
-                    || entity.getType().equals(EntityType.MINECART_HOPPER)) {
-                InventoryHolder inventoryHolder = (InventoryHolder) entity;
-
-                e.getPlayer().openInventory(inventoryHolder.getInventory());
-            }
-
-            e.setCancelled(true);
-        }
+        // if (game.getState().equals(Game.State.POST_GAME)) {
+        //     Entity entity = e.getRightClicked();
+        //     // If the player clicked an entity with an inventory
+        //     // show them the inventory
+        //     // TODO: replicate villager trade window, since they only allow a single
+        //     //  player to interact with them
+        //     if (entity.getType().equals(EntityType.VILLAGER)) {
+        //         return;
+        //     }
+        //     // Only allow the following inventory holding entities as interaction targets
+        //     if (entity.getType().equals(EntityType.MINECART_CHEST)
+        //             || entity.getType().equals(EntityType.MINECART_FURNACE)
+        //             || entity.getType().equals(EntityType.MINECART_HOPPER)) {
+        //         InventoryHolder inventoryHolder = (InventoryHolder) entity;
+        //         e.getPlayer().openInventory(inventoryHolder.getInventory());
+        //     }
+        //     e.setCancelled(true);
+        // }
     }
 
     @EventHandler
