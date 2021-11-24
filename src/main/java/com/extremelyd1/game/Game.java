@@ -256,7 +256,7 @@ public class Game {
             radius = Math.round(config.getOverworldBorderSize() / 4f);
         } else {
             // Base radius of 200, with an increase of 100 per team
-            radius = 200 + 100 * teamManager.getNumActiveTeams();
+            radius = 20000 + 100 * teamManager.getNumActiveTeams();
         }
 
         // Gather locations to spread teams
